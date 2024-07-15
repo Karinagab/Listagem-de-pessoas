@@ -25,4 +25,29 @@
       </tr>
     </tbody>
   </table>
-  <a  class="btn btn-dark" routerLink="/pessoas/create">Cadastrar</a>
+  <button class="btn btn-primary" routerLink="/pessoas/cadastrar">Cadastrar</button>  
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Role</th>
+        <th>Age</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pessoa of pessoas">
+        <td>{{ pessoa.name }}</td>
+        <td>{{ pessoa.role }}</td>
+        <td>{{ pessoa.age }}</td>
+        <td>{{ pessoa.email }}</td>
+        <td>
+          <button (click)="editarPessoa(pessoa.id)">Editar</button>
+          <button (click)="deletarPessoa(pessoa.id)">Deletar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  

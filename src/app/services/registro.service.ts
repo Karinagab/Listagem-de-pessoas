@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Pessoa } from '../pessoa';
 
@@ -7,15 +7,23 @@ import { Pessoa } from '../pessoa';
   providedIn: 'root'
 })
 export class RegistroService {
-  api = 'http://localhost:3000/profiles';
+  private apiUrl = 'YOUR_API_URL_HERE';
 
   constructor(private http: HttpClient) { }
 
-  busca(): Observable<Pessoa[]> {
-    return this.http.get<Pessoa[]>(this.api);
+  cadastrar(pessoa: Pessoa): Observable<Pessoa> {
+    return this.http.post<Pessoa>(`${this.apiUrl}/pessoas`, pessoa);
   }
-  cadastrar(profile: any) {
-    return this.http.post<any>(this.api, profile);
-  
-}
+
+  atualizar(pessoa: Pessoa): Observable<Pessoa> {
+    return this.http.put<Pessoa>(`${this.apiUrl}/pessoas/${pessoa.id}`, pessoa);
+  }
+
+  deletar(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/pessoas/${id}`);
+  }
+
+  listar(): Observable<Pessoa[]> {
+    return this.http.get<Pessoa[]>(`${this.apiUrl}/pessoas`);
+  }
 }
