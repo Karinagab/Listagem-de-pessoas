@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MenuItem } from './interfaces/menu-item';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Listagem-de-Pessoas';
+
+  items: Array<MenuItem> = [
+    {
+      'name': 'Home',
+      'url': '/home'
+    },
+    {
+      'name': 'Registro',
+      'url': '/registro',
+    },
+  ]
 }
