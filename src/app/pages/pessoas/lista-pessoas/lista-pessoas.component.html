@@ -1,53 +1,32 @@
 <h1>Registro de Pessoas</h1>
 <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">id</th>
-        <th scope="col">nome</th>
-        <th scope="col">role</th>
-        <th scope="col">age</th>
-        <th scope="col">email</th>
-        <th scope="col">isActive</th>
-        <th scope="col">country</th>
-        <th scope="col">experience</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let pessoa of pessoas">
-        <th scope="row">{{pessoa.id}}</th>
-        <td>{{pessoa.name}}</td>
-        <td>{{pessoa.role}}</td>
-        <td>{{pessoa.age}}</td>
-        <td>{{pessoa.email}}</td>
-        <td>{{pessoa.isActive}}</td>
-        <td>{{pessoa.country}}</td>
-        <td>{{pessoa.experience}}</td>
-      </tr>
-    </tbody>
-  </table>
-  <button class="btn btn-primary" routerLink="/pessoas/cadastrar">Cadastrar</button>  
-  <table>
-    <thead>
-      <tr>
-        <th>Nome</th>
-        <th>Role</th>
-        <th>Age</th>
-        <th>Email</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let pessoa of pessoas">
-        <td>{{ pessoa.name }}</td>
-        <td>{{ pessoa.role }}</td>
-        <td>{{ pessoa.age }}</td>
-        <td>{{ pessoa.email }}</td>
-        <td>
-          <button (click)="editarPessoa(pessoa.id)">Editar</button>
-          <button (click)="deletarPessoa(pessoa.id)">Deletar</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  
+  <thead>
+    <tr>
+      <th scope=>id</th>
+      <th scope=>nome</th>
+      <th scope=>role</th>
+      <th scope=>age</th>
+      <th scope=>email</th>
+      <th scope=>isActive</th>
+      <th scope=>country</th>
+      <th scope=>experience</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pessoa of pessoas">
+      <td>{{ pessoa.id }}</td>
+      <td>{{ pessoa.name }}</td>
+      <td>{{ pessoa.role }}</td>
+      <td>{{ pessoa.age }}</td>
+      <td>{{ pessoa.email }}</td>
+      <td>{{ pessoa.isActive }}</td>
+      <td>{{ pessoa.country }}</td>
+      <td>{{ pessoa.experience }}</td>
+      <td>
+    </tr>
+  </tbody>
+</table>
+
+
+
   

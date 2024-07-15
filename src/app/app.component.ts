@@ -18,5 +18,9 @@ export class AppComponent {
       'name': 'Registro',
       'url': '/registro',
     },
+    {
+      'name': 'Cadastro',
+      'url': '/cadastrar',
+    },
   ]
 }

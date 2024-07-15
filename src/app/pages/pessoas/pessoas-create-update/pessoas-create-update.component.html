@@ -1,5 +1,5 @@
 <div class="container">
-    <form (ngSubmit)="onSubmit()" [ formGroup ]="pessoaForm">
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
         <div class="mb-3">
             <label for="id" class="form-label">Id</label>
             <input type="text" class="form-control" id="id" formControlName="id">
@@ -32,6 +32,6 @@
             <label for="experience" class="form-label">Experience</label>
             <input type="text" class="form-control" id="experience" formControlName="experience">
         </div>
-        <button type="submit" class="btn btn-primary" [disabled]="pessoaForm.invalid">Cadastrar</button>
+        <button type="submit" class="btn btn-primary" routerLink ='/cadastrar'[disabled]="profileForm.invalid">Cadastrar</button>
     </form>
 </div>

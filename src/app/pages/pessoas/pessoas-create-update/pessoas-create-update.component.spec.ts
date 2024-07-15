@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PessoasCreateUpdateComponent } from './pessoas-create-update.component';
+import { PessoasCreateUpdateComponent } from './PessoasCreateUpdateComponent';
 
 describe('PessoasCreateUpdateComponent', () => {
   let component: PessoasCreateUpdateComponent;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { RegistroService } from 'src/app/services/registro.service';
 import { Pessoa } from 'src/app/pessoa';
 import { Router } from '@angular/router';
@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./lista-pessoas.component.css']
 })
 export class PessoasListComponent implements OnInit {
-  pessoas: Pessoa[] = [];
+ @Input() pessoas: Pessoa[] = [];
 
   constructor(private registroService: RegistroService, private router: Router) {}
 
@@ -19,8 +19,8 @@ export class PessoasListComponent implements OnInit {
   }
 
   carregarPessoas(): void {
-    this.registroService.listar().subscribe((data: Pessoa[]) => {
-      this.pessoas = data;
+    this.registroService.listar().subscribe((pessoas: Pessoa[]) => {
+      this.pessoas = pessoas;
     });
   }
 
@@ -40,7 +40,10 @@ export class PessoasListComponent implements OnInit {
       if (result.isConfirmed) {
         this.registroService.deletar(id).subscribe(() => {
           Swal.fire('Deletado!', 'O registro foi deletado.', 'success');
-          this.carregarPessoas();
+          this.carregarPessoas(); 
+        }, (error) => {
+          console.error('Erro ao deletar pessoa:', error);
+          Swal.fire('Erro!', 'Ocorreu um erro ao deletar o registro.', 'error');
         });
       }
     });

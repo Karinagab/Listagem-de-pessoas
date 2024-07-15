@@ -7,23 +7,23 @@ import { Pessoa } from '../pessoa';
   providedIn: 'root'
 })
 export class RegistroService {
-  private apiUrl = 'YOUR_API_URL_HERE';
+  api = 'http://localhost:3000/profiles';
 
   constructor(private http: HttpClient) { }
 
   cadastrar(pessoa: Pessoa): Observable<Pessoa> {
-    return this.http.post<Pessoa>(`${this.apiUrl}/pessoas`, pessoa);
+    return this.http.post<Pessoa>(`${this.api}/cadastrar`, pessoa);
   }
 
   atualizar(pessoa: Pessoa): Observable<Pessoa> {
-    return this.http.put<Pessoa>(`${this.apiUrl}/pessoas/${pessoa.id}`, pessoa);
+    return this.http.put<Pessoa>(`${this.api}/registro/${pessoa.id}`, pessoa);
   }
 
   deletar(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/pessoas/${id}`);
+    return this.http.delete<void>(`${this.api}/registro/${id}`);
   }
 
-  listar(): Observable<Pessoa[]> {
-    return this.http.get<Pessoa[]>(`${this.apiUrl}/pessoas`);
+  listar() {
+    return this.http.get(this.api);
   }
 }

@@ -13,6 +13,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "sweetalert2"
+            ],
             "outputPath": "dist/listagem-de-pessoas",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -99,5 +102,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "a0c50882-ce26-4180-b84e-c9f5a1614d12"
   }
 }
