@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./lista-pessoas.component.css']
 })
 export class PessoasListComponent implements OnInit {
- @Input() pessoas: Pessoa[] = [];
+  pessoas: Pessoa[] = [];
 
   constructor(private registroService: RegistroService, private router: Router) {}
 
@@ -19,9 +19,15 @@ export class PessoasListComponent implements OnInit {
   }
 
   carregarPessoas(): void {
-    this.registroService.listar().subscribe((pessoas: Pessoa[]) => {
-      this.pessoas = pessoas;
-    });
+    this.registroService.listar().subscribe(
+      (pessoas: Pessoa[]) => { 
+        this.pessoas = pessoas;
+      },
+      (error) => {
+        console.error('Erro ao carregar pessoas:', error);
+        Swal.fire('Erro!', 'Ocorreu um erro ao carregar as pessoas.', 'error');
+      }
+    );
   }
 
   editarPessoa(id: number): void {
@@ -38,13 +44,16 @@ export class PessoasListComponent implements OnInit {
       cancelButtonText: 'Não, cancelar!'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.registroService.deletar(id).subscribe(() => {
-          Swal.fire('Deletado!', 'O registro foi deletado.', 'success');
-          this.carregarPessoas(); 
-        }, (error) => {
-          console.error('Erro ao deletar pessoa:', error);
-          Swal.fire('Erro!', 'Ocorreu um erro ao deletar o registro.', 'error');
-        });
+        this.registroService.deletar(id).subscribe(
+          () => {
+            Swal.fire('Deletado!', 'O registro foi deletado.', 'success');
+            this.carregarPessoas();
+          },
+          (error) => {
+            console.error('Erro ao deletar pessoa:', error);
+            Swal.fire('Erro!', 'Ocorreu um erro ao deletar o registro.', 'error');
+          }
+        );
       }
     });
   }
